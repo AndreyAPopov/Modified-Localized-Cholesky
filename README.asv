@@ -9,20 +9,7 @@ Usage
 % influence, calculate T, Di s. t. T.'*Di*T is an approximation 
 % to B^-1.
 
-% calculate the anomalies
 muE = mean(X, 2);
-A = X - muE;
+A = X - 
 
-[T, Di, sparcity] = modchol(A, dist, radius);
-
-% modify X somehow
-X = modifyX(X, T, Di);
-
-% recalculate the anomalies
-muE = mean(X, 2);
-A = X - muE;
-
-% re-use the sparcity developed in the previous function call
-% to speed up the next calculation
-[T, Di] = modchol(A, dist, radius, sparcity);
 ```

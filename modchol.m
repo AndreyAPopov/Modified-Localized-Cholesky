@@ -67,7 +67,7 @@ for i = 2:n
     ind = ind + njs;
 end
 
-T = sparse(Tis, Tjs, Tvs);
+T = sparse(Tis, Tjs, Tvs, n, n);
 
 d = sum(E.*E, 2)/(N - 1);
 

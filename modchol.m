@@ -54,7 +54,12 @@ E(1, :) = A(1, :).';
 for i = 2:n
     js = find(sparcity(:, i));
     Zi = A(js, :);
-    bi = (Zi*Zi.')\(Zi*(A(i, :).'));
+    if size(Zi, 1) > size(Zi, 2)
+        % compute the Penrose inverse
+        bi = Zi*((Zi.'*Zi)\(A(i, :).'));
+    else
+        bi = (Zi*Zi.')\(Zi*(A(i, :).'));
+   end
     
     E(i, :) = A(i, :).' - Zi.'*bi;
     
